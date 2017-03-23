@@ -1,41 +1,38 @@
 #include <stdio.h>
 #include <fstream>
 #include <string>
+#include <iostream>
 using namespace std;
-void printFile(string &filename);
-string entrypt(string &content){
-	for(int i=0;i<content.size();i++){
-		if('a'<=content[i]<'z'or'A'<=content[i]<'Z'){
-		content[i]+=content[i];
-	}
-		else if(content[i]=='z'){
-			content[i]='a';
-		}else if(content[i]=='Z'){
-			content[i]=='A';
+string entrypt(string &content) {
+	for (int i = 0; i<content.size(); i++) {
+		if (content[i] == 'z'||content[i] == 'Z') {
+			content[i] -= 25;
+		}		
+		else if (('a' <= content[i]&& content[i]<'z')||('A' <= content[i]&& content[i]<'Z')){
+			content[i] += 1;
 		}
 	}
 	return content;
 }
-
-int main(int argc,char *argc[]){
-	if(argc){
-		string content;
-		while(1){
-			gets(content);
-		}
-		printFile(entrypt(content))
-	}
-	else{
-		for(int i=1;i<argc;i++){
-			print(argc[i]);		
-		}
-	}
-}
-void printFile(string &filename){
+void printFile(string filename) {
 	ifstream myfile(filename);
-	while(getline(infile,buff)){
-		cout<<filename;
-		cout<<entrypt(buff)<<endl;
+	string buff;
+	while (getline(myfile, buff)) {
+		cout << entrypt(buff) << endl;
 	}
+	myfile.close();
+}
+int main(int argc, char const *argv[]) {
+		if (argc==1) {
+			string content="";
+			while (cin>>content,!cin.eof()) {
+				cout<<entrypt(content)<<endl;
+			}
+		}
+		else {
+			for (int i = 1; i<argc; i++) {
+				printFile(argv[i]);
+			}
+		}
 }
 
