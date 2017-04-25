@@ -7,7 +7,7 @@
 
 """
 The :mod:`hmmlearn.hmm` module implements hidden Markov models.
-""" 
+"""
 
 import string
 
@@ -107,7 +107,7 @@ class GaussianHMM(_BaseHMM):
     >>> from hmmlearn.hmm import GaussianHMM
     >>> GaussianHMM(n_components=2)
     ...                             #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-
+    GaussianHMM(algorithm='viterbi',...
 
 
     See Also
@@ -134,7 +134,7 @@ class GaussianHMM(_BaseHMM):
             raise ValueError('bad covariance_type')
 
         self.means_prior = means_prior
-
+        self.means_weight = means_weight
 
         self.covars_prior = covars_prior
         self.covars_weight = covars_weight
@@ -332,7 +332,7 @@ class MultinomialHMM(_BaseHMM):
     """Hidden Markov Model with multinomial (discrete) emissions
 
     Attributes
-
+    ----------
     n_components : int
         Number of states in the model.
 
@@ -374,7 +374,7 @@ class MultinomialHMM(_BaseHMM):
     >>> from hmmlearn.hmm import MultinomialHMM
     >>> MultinomialHMM(n_components=2)
     ...                             #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-
+    MultinomialHMM(algorithm='viterbi',...
 
     See Also
     --------
@@ -554,7 +554,7 @@ class GMMHMM(_BaseHMM):
     >>> from hmmlearn.hmm import GMMHMM
     >>> GMMHMM(n_components=2, n_mix=10, covariance_type='diag')
     ... # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
-
+    GMMHMM(algorithm='viterbi', covariance_type='diag',...
 
     See Also
     --------
